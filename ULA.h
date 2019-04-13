@@ -15,23 +15,49 @@ public:
     public boolean getCond();    
 };
 
-ULA() { cond1= false; }
-void readA(int _a) {a= _a;}
-void readB(int _b) {b= _b;}
-int writeResult() {return(s);}
+ULA::ULA() { cond1 = false; }
+void ULA::readA(int _a) {a= _a;}
+void ULA::readB(int _b) {b= _b;}
+int ULA::writeResult() {return(s);}
 
-void op(int ulaOP){
+void ULA::op(int ulaOP){
     switch (ulaOP) {
-      case 0 : s= a + b; break;
-      case 1 : s= a - b; break;
-      case 2 : s= a | b; break;
-      case 3 : s= a * b; break;
-      case 4 : { if (a < b) cond1= true; else cond1= false; break;}
-      default: break;
+        case 0:
+            s = a + b
+            break;
+        case 1:
+            s = a - b;
+            break;
+        case 2:
+            s = a * b;
+            break;
+        case 3:
+            s = a / b;
+            break;
+        case 4:
+            s = a * a;
+            break;
+        case 5:
+            if(a == 0){cond = true;}else{cond = false;} 
+            break;
+        case 6:
+            if(a == b){cond = true;}else{cond = false;}
+            break;
+        case 7:
+            s = 1;
+            break;
+        case 8:
+            s = 0;
+            break;
+        case 9:
+            s = a;
+            break;
+        default:
+            break;
     }
 }
    
-bool getCond() { return(cond1); }
+bool ULA::getCond() { return(cond1); }
 
 #endif
 

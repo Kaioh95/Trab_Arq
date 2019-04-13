@@ -11,15 +11,15 @@ public:
     void writeR(int _adress, int _v);  
 };
 
-REGS(){
+REGS::REGS(){
     regs = new int[16];
 }
     
-int readR(int _adress){
+int REGS::readR(int _adress){
     return (regs[_adress]);
 }
     
-void writeR(int _adress, int _v){
+void REGS::writeR(int _adress, int _v){
     regs[_adress]= _v;
 }
 
