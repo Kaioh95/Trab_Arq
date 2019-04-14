@@ -13,14 +13,14 @@ public:
 
 REGS::REGS(){
     regs = new int[16];
-}
+};
     
 int REGS::readR(int _adress){
     return (regs[_adress]);
-}
+};
     
 void REGS::writeR(int _adress, int _v){
     regs[_adress]= _v;
-}
+};
 
-#endif;
+#endif
