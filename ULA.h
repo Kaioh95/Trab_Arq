@@ -11,8 +11,10 @@ public:
     void readB(int _b);
     int writeResult();
 
-    public void op(int ulaOP);
-    public boolean getCond();    
+    public:
+        void op(int ulaOP);
+    public:
+        bool getCond();    
 };
 
 ULA::ULA() { cond1 = false; }
@@ -23,7 +25,7 @@ int ULA::writeResult() {return(s);}
 void ULA::op(int ulaOP){
     switch (ulaOP) {
         case 0:
-            s = a + b
+            s = a + b;
             break;
         case 1:
             s = a - b;
@@ -38,10 +40,10 @@ void ULA::op(int ulaOP){
             s = a * a;
             break;
         case 5:
-            if(a == 0){cond = true;}else{cond = false;} 
+            if(a == 0){cond1 = true;}else{cond1 = false;} 
             break;
         case 6:
-            if(a == b){cond = true;}else{cond = false;}
+            if(a == b){cond1 = true;}else{cond1 = false;}
             break;
         case 7:
             s = 1;

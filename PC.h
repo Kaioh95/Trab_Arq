@@ -20,24 +20,24 @@ public:
 PC::PC(ULA _ula, REGS _regs) {
         ula= _ula; regs= _regs;
         lastState= false;
-}
+};
     
 void PC::FTE(){
     switch (EA){
         case 0 :
             ula.op(7);
             regs.writeR(1, ula.writeResult());
-            ula.op(8)
+            ula.op(8);
             regs.writeR(5, ula.writeResult());
-            ula.op(5)
-            if(getCond) PE = 1;
+            ula.op(5);
+            if(ula.getCond()) PE = 1;
             else lastState = true; 
             break; 
         case 1 :
             ula.readA(regs.readR(1));
             ula.readB(regs.readR(1));
             ula.op(2);
-            regs.wirteR(4, ula.writeResult());
+            regs.writeR(4, ula.writeResult());
             PE = 2;
             break;
         case 2 :
@@ -95,10 +95,10 @@ void PC::FTE(){
         
 void PC::updateState(){
     EA= PE;  
-}
+};
         
 bool PC::getLastState() {
     return(lastState);
-}
+};
 
 #endif
