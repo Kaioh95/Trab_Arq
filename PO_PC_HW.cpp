@@ -1,6 +1,6 @@
 #include <iostream>
 #include "PC.h"
-
+//COMANDO PARA COMPILAR: make
 using namespace std;
 
 int main(int argc, char* argv[]){
