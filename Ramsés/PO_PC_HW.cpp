@@ -11,7 +11,7 @@ int main(int argc, char* argv[]){
     MEM *mem = new MEM();
     PC *pc = new PC(*ula, *regs, *mem); 
         
-    for(int _clock=0; _clock < 100; _clock++) {
+    for(int _clock=0; _clock < 999; _clock++) {
         pc->FTE();
         pc->updateState();
         if(pc->getLastState() == true) break;    

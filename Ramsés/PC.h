@@ -9,7 +9,7 @@ using namespace std;
 
 class PC{
 public:
-	int cont=0;
+	int cont = 0;
     int EA = 0;
     int PE; // estado atual, proximo estado
     bool lastState;
