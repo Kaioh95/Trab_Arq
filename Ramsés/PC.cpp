@@ -6,11 +6,12 @@ PC::PC(ULA _ula, REGS _regs, MEM _mem) {
 };
 
 void PC::FTE(){
-    if(cont != 127 && !lastState){
+    if(cont <= 127 && !lastState){
         int instrucao = mem.read(cont);
         cont++;
         int endereco = mem.read(cont);
         cont++;
+        cout<<cont<<endl;
 
         switch (instrucao){
             case 0://NOP
