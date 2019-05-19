@@ -21,8 +21,8 @@ int main(int argc, char* argv[]){
     	cout<<"o arquivo não foi aberto"<<endl;
     	exit(1);
     }
-    while(!arq.eof()){
-    	getline(arq, str);
+    while(getline(arq, str)){
+    	//getline(arq, str);
 
     	if(!str.compare("dados")){
     		bloco = str;
@@ -43,20 +43,21 @@ int main(int argc, char* argv[]){
     			dado.push_back(str[j]);
     		}
     		mem->write(atoi(end.c_str()), atoi(dado.c_str()));
-    		cout<<"sim "<<str<<endl;
+            //cout <<end<<dado<<endl;
+            //cout<<mem->read(atoi(end.c_str()))<<endl;
     	}
     	if(!bloco.compare("cod") && str.compare("cod") && !str.empty()){
-    		mem->write(c++, atoi(str.c_str()));
-    		cout<<"sim "<<str<<endl;
+            mem->write(c++, atoi(str.c_str()));
     	}
+        //cout<<"sim "<<c<<endl;
     }
-    /*for(int k = 0; k < 256; k++){
+    cout <<mem->read(128)<<mem->read(129)<<endl;
+    for(int k = 0; k < 256; k++){
     	cout<<k<<": "<<(mem->read(k))<<endl;
-    }*/
+    }
     arq.close();
 
     for(int _clock=0; _clock < 999; _clock++){
-        cout<<"sim "<<c<<endl;
         pc->FTE();
         pc->updateState();
     	//cout<<"RA: "<< regs->readR(0) <<" RB: "<< regs->readR(1) <<" RX: "<< regs->readR(2) << endl;
