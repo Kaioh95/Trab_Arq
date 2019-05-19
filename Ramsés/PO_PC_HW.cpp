@@ -52,15 +52,16 @@ int main(int argc, char* argv[]){
         //cout<<"sim "<<c<<endl;
     }
     cout <<mem->read(128)<<mem->read(129)<<endl;
-    for(int k = 0; k < 256; k++){
+    /*for(int k = 0; k < 256; k++){
     	cout<<k<<": "<<(mem->read(k))<<endl;
-    }
+    }*/
     arq.close();
 
     for(int _clock=0; _clock < 999; _clock++){
+        cout<<"sim"<<endl;
         pc->FTE();
-        pc->updateState();
-    	//cout<<"RA: "<< regs->readR(0) <<" RB: "<< regs->readR(1) <<" RX: "<< regs->readR(2) << endl;
+        //pc->updateState();
+    	cout<<"RA: "<< regs->readR(0) <<" RB: "<< regs->readR(1) <<" RX: "<< regs->readR(2) << endl;
         if(pc->getLastState() == true) break;    
     }
 	return 0;      
