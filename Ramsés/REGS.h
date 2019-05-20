@@ -8,7 +8,7 @@ public:
     
     REGS();
     ~REGS();
-    int readR(int _adress);
+    int readR(int _adress)const;
     void writeR(int _adress, int _v);  
 };
 

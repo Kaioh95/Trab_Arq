@@ -8,7 +8,7 @@ public:
     
     MEM();
     ~MEM();
-    int read(int _adress);
+    int read(int _adress)const;
     void write(int _adress, int _v);  
 };
 

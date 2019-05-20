@@ -1,6 +1,6 @@
 #include "PC.h"
 
-PC::PC(ULA _ula, REGS _regs, MEM _mem) {
+PC::PC(ULA &_ula, REGS &_regs, MEM &_mem) {
         ula= _ula; regs= _regs;  mem = _mem;
         lastState= false;
 };

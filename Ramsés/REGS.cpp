@@ -8,7 +8,7 @@ REGS::~REGS(){
 	delete[] regs;
 }
     
-int REGS::readR(int _adress){
+int REGS::readR(int _adress)const{
     return (regs[_adress]);
 };
     

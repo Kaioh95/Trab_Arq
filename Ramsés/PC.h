@@ -17,7 +17,7 @@ public:
     REGS regs;
     MEM mem;
     
-    PC (ULA _ula, REGS _regs, MEM _mem);
+    PC (ULA &_ula, REGS &_regs, MEM &_mem);
     void FTE();
     void updateState();
     bool getLastState();
