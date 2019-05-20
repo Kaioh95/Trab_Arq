@@ -1,0 +1,117 @@
+0 - NOP
+
+16 - STA direto
+17 - STA indireto
+19 - STA indexado
+
+20 - STB direto
+21 - STB indireto
+23 - STB indexado
+
+24 - STX direto
+25 - STX indireto
+27 - STX indexado
+
+32 - LDA direto
+33 - LDA indireto
+34 - LDA constante
+35 - LDA indexado
+
+36 - LDB direto
+37 - LDB indireto
+38 - LDB constante
+39 - LDB indexado
+
+40 - LDX direto
+41 - LDX indireto
+42 - LDX constante
+43 - LDX indexado
+
+48 - ADD A direto
+49 - ADD A indireto
+50 - ADD A constate
+51 - ADD A indexado
+
+52 - ADD B direto
+53 - ADD B indireto
+54 - ADD B constante
+55 - ADD B indexado
+
+56 - ADD X direto
+57 - ADD X indireto
+58 - ADD X constante
+59 - ADD x indexado
+
+64 - OR A direto
+65 - OR A indireto
+66 - OR A constate
+67 - OR A indexado
+
+68 - OR B direto
+69 - OR B indireto
+70 - OR B constante
+71 - OR B indexado
+
+72 - OR X direto
+73 - OR X indireto
+74 - OR X constante
+75 - OR x indexado
+
+80 - AND A direto
+81 - AND A indireto
+82 - AND A constate
+83 - AND A indexado
+
+84 - AND B direto
+85 - AND B indireto
+86 - AND B constante
+87 - AND B indexado
+
+88 - AND X direto
+89 - AND X indireto
+90 - AND X constante
+91 - AND x indexado
+
+96 - NOT A
+100 - NOT B
+104 - NOT X
+
+112 - SUB A direto
+113 - SUB A indireto
+114 - SUB A constate
+115 - SUB A indexado
+
+116 - SUB B direto
+117 - SUB B indireto
+118 - SUB B constante
+119 - SUB B indexado
+
+120 - SUB X direto
+121 - SUB X indireto
+122 - SUB X constante
+123 - SUB x indexado
+
+128 - JMP direto
+129 - JMP indireto
+
+144 - JN direto
+145 - JN indireto
+
+160 - JZ direto
+161 - JZ indireto
+
+176 - JC direto
+177 - JC indireto
+
+192 - JSR direto
+193 - JSR indireto
+
+208 - NEG A
+212 - NEG B
+216 - NEG X
+
+224 - SHR A
+228 - SHR B
+232 - SHR X
+
+240 - HLT

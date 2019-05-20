@@ -386,49 +386,49 @@ void PC::FTE(){
                 regs.writeR(2, ula.writeResult());
                 break;
             case 128://JMP Direto
-                cont = mem.read(endereco);
+                cont = endereco;
                 break;
             case 129://JMP Indireto
-                cont = mem.read(mem.read(endereco));
+                cont = mem.read(endereco);
                 break;
             case 144://JN Direto
                 if(ula.getn()){
-                    cont = mem.read(endereco);
+                    cont = endereco;
                 }
                 break;
             case 145://JN Indireto
                 if(ula.getn()){
-                    cont = mem.read(mem.read(endereco));
+                    cont = mem.read(endereco);
                 }
                 break;
             case 160://JZ Direto
                 if(ula.getz()){
-                    cont = mem.read(endereco);
+                    cont = endereco;
                 }
                 break;
             case 161://JZ Indireto
                 if(ula.getz()){
-                    cont = mem.read(mem.read(endereco));
+                    cont = mem.read(endereco);
                 }
                 break;
             case 176://JC Direto
                 if(ula.getc()){
-                    cont = mem.read(endereco);
+                    cont = endereco;
                 }
                 break;
             case 177://JC Indireto
                 if(ula.getc()){
-                    cont = mem.read(mem.read(endereco));
+                    cont = mem.read(endereco);
                 }
                 break;
             case 192://JSR Direto
-                mem.write(mem.read(endereco), cont);
-                cont = mem.read(endereco);
+                mem.write(endereco, cont);
+                cont = endereco;
                 cont++;
                 break;
             case 193://JSR Indireto
-                mem.write(mem.read(mem.read(endereco)), cont);
-                cont = mem.read(mem.read(endereco));
+                mem.write(mem.read(endereco), cont);
+                cont = mem.read(endereco);
                 cont++;
                 break;
             case 208://NEG A
