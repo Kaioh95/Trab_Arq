@@ -1,6 +1,10 @@
 #ifndef ULA_H
 #define ULA_H
 
+#include <iostream>
+
+using namespace std;
+
 class ULA
 {
 public:

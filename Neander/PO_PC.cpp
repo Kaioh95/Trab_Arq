@@ -10,9 +10,9 @@ using namespace std;
 int main()
 {
 	ULA *ula = new ULA();
-    REGS *regs =  new REGS();
+    AC *ac =  new AC();
     MEM *mem = new MEM();
-    PC *pc = new PC(*ula, *regs, *mem);
+    PC *pc = new PC(*ula, *ac, *mem);
 
 
     //Dados
@@ -62,18 +62,23 @@ int main()
     func.close();
 
 
-    for (int i = 0; i < 255; i++)cout<<i<<": "<<mem->get(i)<<endl;//retirar
 
 
     for(int clock=0; clock < 100; clock++)
     {
-    	pc->FTE();
-    	pc->updateState();
-    	if (pc->getLastState() == true)break;
+        pc->FTE();
+        pc->updateState();
+
+        if (pc->getLastState() == true)break;
+
+        cout<<"value_AC: "<<ac->get(0)<<endl;
     }
 
-    cout<<regs->get(0)<<endl;
+    //for (int i = 0; i < 255; i++)cout<<i<<": "<<mem->get(i)<<endl;//retirar
+    
+    //cout<<ac->get(0)<<endl;
     
     cout<<endl;
+
     return 0;
 }

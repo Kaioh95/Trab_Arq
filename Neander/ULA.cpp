@@ -38,12 +38,15 @@ void ULA::op(int op)
 		case 0:
 			break;
 		case 1:
+			cout<<"ULA: "<<a<<" + "<<b<<endl;
 			s = a + b;
 			break;
 		case 2:
+			cout<<"ULA: "<<a<<" - "<<b<<endl;
 			s = a - b;
 			break;
 		case 3:
+			cout<<"ULA: -"<<a<<" - "<<b<<endl;
 			s = -a - 1;
 			break;
 		case 4:

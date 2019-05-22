@@ -1,7 +1,7 @@
 #ifndef PC_H
 #define PC_H
 
-#include "REGS.h"
+#include "AC.h"
 #include "ULA.h"
 #include "MEM.hpp"
 
@@ -18,10 +18,10 @@ class PC
 		bool lastState;
 		int cont;
 		ULA ula;
-		REGS regs;
+		AC ac;
 		MEM mem;
 
-		PC(ULA &u, REGS &r, MEM &m);
+		PC(ULA &u, AC &a, MEM &m);
 		void FTE();
 		void updateState();
 		bool getLastState();

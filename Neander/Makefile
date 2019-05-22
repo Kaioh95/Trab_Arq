@@ -1,6 +1,6 @@
 
-REGS.o: REGS.cpp REGS.h
-	g++ REGS.cpp -c
+REGS.o: AC.cpp AC.h
+	g++ AC.cpp -c
 
 ULA.o: ULA.cpp ULA.h
 	g++ ULA.cpp -c
@@ -12,9 +12,9 @@ MEM.o: MEM.cpp MEM.hpp
 	g++ MEM.cpp -c
 
 main.o: PO_PC.cpp
-	g++ PO_PC.cpp MEM.o PC.o ULA.o REGS.o -o main
+	g++ PO_PC.cpp MEM.o PC.o ULA.o AC.o -o main
 
-all: REGS.o ULA.o PC.o MEM.o main.o
+all: AC.o ULA.o PC.o MEM.o main.o
 
 
 clear:

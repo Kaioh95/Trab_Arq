@@ -1,12 +1,11 @@
-#ifndef REGS_H
-#define REGS_H
+#ifndef AC_H
+#define AC_H
 
-class REGS{
+class AC{
 public:
-    //int [] regs;
-    float* regs;
+    float* ac;
     
-    REGS ();
+    AC ();
     float get(int _adress);
     void set(int _adress, float _v);  
 };

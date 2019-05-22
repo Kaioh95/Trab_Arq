@@ -1,9 +1,9 @@
 #include "PC.h"
 
-PC::PC(ULA &u, REGS &r, MEM &m)
+PC::PC(ULA &u, AC &a, MEM &m)
 {
 	ula = u;
-	regs = r;
+	ac = a;
 	mem = m;
 
 	cont = 0;
@@ -14,7 +14,7 @@ PC::PC(ULA &u, REGS &r, MEM &m)
 void PC::FTE()
 {
 	int instrucao = mem.get(cont);
-	cout<<cont<<": "<<mem.get(cont)<<endl;
+	//cout<<cont<<": "<<mem.get(cont)<<endl;
 	cont++;
 	int end = mem.get(cont);
 	cont++;
@@ -22,65 +22,71 @@ void PC::FTE()
 	switch(instrucao)
 	{
 		case 0: //NOP
+		cout<<"NOOOP"<<endl;
 		    cont--;
 			break;
 
 		case 16: //STA
-			mem.set(end, regs.get(0));
+			mem.set(end, ac.get(0));
+			cout<<"STA: end "<<end<<"| value "<<ac.get(0)<< endl;
 			break;
 
 		case 32: //LDA
-			regs.set(0, mem.get(end));
+			ac.set(0, mem.get(end));
+			cout<<"LDA: end "<<end<<"| value "<<mem.get(end)<< endl;
 			break;
 
 		case 48: //ADD
-			ula.setA(regs.get(0));
+			ula.setA(ac.get(0));
 			ula.setB(mem.get(end));
 			ula.op(1);
-			//cout<<"ula getS: "<<ula.getS()<<endl;
-			regs.set(0, ula.getS());
+			ac.set(0, ula.getS());
 			break;
 
 		case 64: //OR
-			ula.setA(regs.get(0));
+			ula.setA(ac.get(0));
 			ula.setB(mem.get(end));
 			ula.op(4);
-			regs.set(0, ula.getS());
+			ac.set(0, ula.getS());
 			break;
 
 		case 80: //AND
-			ula.setA(regs.get(0));
+			ula.setA(ac.get(0));
 			ula.setB(mem.get(end));
 			ula.op(5);
-			regs.set(0, ula.getS());
+			ac.set(0, ula.getS());
 			break;
 
 		case 96: //NOT
-			ula.setA(regs.get(0));
+			ula.setA(ac.get(0));
 			ula.op(3);
-			regs.set(0, ula.getS());
+			ac.set(0, ula.getS());
 			break;	
 
 		case 128: //JMP
-			cont = mem.get(end);
+			cout<<"JMP: end "<<end<<endl;
+			cont = end;
 
 			break;
 
 		case 144://JN
 			if(ula.getN())
 			{
-				cont = mem.get(end);
+				cout<<"JN: end "<<end<<endl;
+				cont = end;
 			}
 			break;
 
 		case 160: //JZ
 			if(ula.getZ())
 			{
-				cont = mem.get(end);
+				cout<<"JZ: end "<<end<<endl;
+				cont = end;
 			}
 			break;
 
 		case 240: //HLT
+			cout<<"Fim do programa"<<endl;
 			lastState=true;
 			break;
 		default:
