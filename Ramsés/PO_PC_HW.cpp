@@ -15,7 +15,7 @@ int main(int argc, char* argv[]){
     string bloco;
     int c = 0;
 
-    ifstream arq("leitura.txt", ios::in);
+    ifstream arq("leitura1.txt", ios::in);
 
     if(!arq){
     	cout<<"o arquivo não foi aberto"<<endl;
@@ -57,7 +57,6 @@ int main(int argc, char* argv[]){
     //arq.close();
 
     for(int _clock=0; _clock < 999; _clock++){
-        cout<<"sim"<<endl;
         pc->FTE();
         //pc->updateState();
     	cout<<"RA: "<< regs->readR(0) <<" RB: "<< regs->readR(1) <<" RX: "<< regs->readR(2) << endl;
