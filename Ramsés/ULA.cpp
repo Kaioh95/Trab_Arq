@@ -1,8 +1,10 @@
 #include "ULA.h"
+#include <iostream>
+using namespace std;
 
 ULA::ULA(){
     n = false;
-    z = false;
+    z = true;
     c = false;
 }
 ULA::~ULA(){}
@@ -39,6 +41,31 @@ void ULA::op(int ulaOP){
         default:
             break;
     }
+    if(s > 127 || s < -128){
+        c = true;
+        z = false;
+        n = false;
+        if(s<0)
+            n = true;
+    }
+
+    else if(s < 0){
+        n = true;
+        z = false;
+        c = false;
+    }
+    
+    else if(s == 0){
+        z = true;
+        n = false;
+        c = false;
+    }
+    else{
+        z = false;
+        n = false;
+        c = false;
+    }
+
 }
    
 bool ULA::getn() { return(n); }

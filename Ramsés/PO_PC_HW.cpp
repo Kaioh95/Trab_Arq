@@ -43,14 +43,11 @@ int main(int argc, char* argv[]){
     			dado.push_back(str[j]);
     		}
     		mem->write(atoi(end.c_str()), atoi(dado.c_str()));
-            cout <<end<<dado<<endl;
-            cout<<mem->read(atoi(end.c_str()))<<endl;
     	}
     	if(!bloco.compare("cod") && str.compare("cod") && !str.empty()){
             mem->write(c++, atoi(str.c_str()));
     	}
     }
-    cout <<mem->read(128)<<mem->read(129)<<endl;
     for(int k = 0; k < 256; k++){
     	cout<<k<<": "<<(mem->read(k))<<endl;
     }
@@ -60,7 +57,9 @@ int main(int argc, char* argv[]){
         pc->FTE();
         //pc->updateState();
     	cout<<"RA: "<< regs->readR(0) <<" RB: "<< regs->readR(1) <<" RX: "<< regs->readR(2) << endl;
+        cout<<"N: "<< ula->getn() <<" Z: "<< ula->getz() <<" C: "<< ula->getc() << endl << endl;
         if(pc->getLastState() == true) break;    
     }
+    
 	return 0;      
 }
