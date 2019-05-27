@@ -3,6 +3,11 @@ CC = g++
 CPPFLAGS = -Wall -std=c++11
 OBJS = PO_PC_HW.o PC.o ULA.o REGS.o MEM.o
 
+text = "./prog > saída.txt para executar"
+
+all: $(PROG)
+	@echo $(text)
+
 $(PROG) : $(OBJS)
 	$(CC) $(OBJS) -o $(PROG)
 

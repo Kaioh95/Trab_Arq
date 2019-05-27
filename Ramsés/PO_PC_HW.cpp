@@ -15,7 +15,7 @@ int main(int argc, char* argv[]){
     string bloco;
     int c = 0;
 
-    ifstream arq("leitura1.txt", ios::in);
+    ifstream arq("leitura4.txt", ios::in);
 
     if(!arq){
     	cout<<"o arquivo não foi aberto"<<endl;
@@ -56,8 +56,10 @@ int main(int argc, char* argv[]){
     for(int _clock=0; _clock < 999; _clock++){
         pc->FTE();
         //pc->updateState();
-    	cout<<"RA: "<< regs->readR(0) <<" RB: "<< regs->readR(1) <<" RX: "<< regs->readR(2) << endl;
-        cout<<"N: "<< ula->getn() <<" Z: "<< ula->getz() <<" C: "<< ula->getc() << endl << endl;
+    	cout<<"RA: "<< regs->readR(0) 
+            <<" RB: "<< regs->readR(1) 
+            <<" RX: "<< regs->readR(2) << endl << endl;
+
         if(pc->getLastState() == true) break;    
     }
     

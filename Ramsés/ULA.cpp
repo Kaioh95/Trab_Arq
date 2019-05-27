@@ -3,9 +3,9 @@
 using namespace std;
 
 ULA::ULA(){
-    n = false;
-    z = true;
-    c = false;
+    //n = false;
+    //z = true;
+    //c = false;
 }
 ULA::~ULA(){}
 
@@ -45,8 +45,7 @@ void ULA::op(int ulaOP){
         c = true;
         z = false;
         n = false;
-        if(s<0)
-            n = true;
+        if(s<0){ n = true; }
     }
 
     else if(s < 0){
@@ -64,7 +63,11 @@ void ULA::op(int ulaOP){
         z = false;
         n = false;
         c = false;
+        
     }
+    cout<<"N: "<< n 
+        <<" Z: "<< z 
+        <<" C: "<< c << endl;
 
 }
    
