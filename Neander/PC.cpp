@@ -14,7 +14,6 @@ PC::PC(ULA &u, AC &a, MEM &m)
 void PC::FTE()
 {
 	int instrucao = mem.get(cont);
-	//cout<<cont<<": "<<mem.get(cont)<<endl;
 	cont++;
 	int end = mem.get(cont);
 	cont++;

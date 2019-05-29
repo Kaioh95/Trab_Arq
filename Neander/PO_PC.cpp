@@ -39,9 +39,7 @@ int main()
 
             for(int j = i+1; j < (int)line.size(); j++)dado.push_back(line[j]);
 
-            //cout <<end << " "<< dado << endl;
             mem->set(atoi(end.c_str()), atoi(dado.c_str()));
-            //cout<<mem->get(atoi(end.c_str()))<<endl;
         }
     }
     dados.close();
@@ -61,9 +59,6 @@ int main()
 
     func.close();
 
-
-
-
     for(int clock=0; clock < 100; clock++)
     {
         pc->FTE();
@@ -73,10 +68,6 @@ int main()
 
         cout<<"value_AC: "<<ac->get(0)<<endl;
     }
-
-    //for (int i = 0; i < 255; i++)cout<<i<<": "<<mem->get(i)<<endl;//retirar
-    
-    //cout<<ac->get(0)<<endl;
     
     cout<<endl;
 

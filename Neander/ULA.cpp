@@ -42,17 +42,13 @@ void ULA::op(int op)
 			s = a + b;
 			break;
 		case 2:
-			cout<<"ULA: "<<a<<" - "<<b<<endl;
-			s = a - b;
-			break;
-		case 3:
 			cout<<"ULA: -"<<a<<" - "<<b<<endl;
 			s = -a - 1;
 			break;
-		case 4:
+		case 3:
 			s = (a || b);
 			break;
-		case 5:
+		case 4:
 			s = (a && b);
 		default:
 			break;

@@ -16,7 +16,10 @@ main.o: PO_PC.cpp
 
 all: AC.o ULA.o PC.o MEM.o main.o
 
+exe:
+	./main > saida.txt
 
 clear:
 	rm *.o
 	rm main
+	rm saida.txt
