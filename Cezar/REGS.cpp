@@ -1,9 +1,12 @@
 #include "REGS.h"
 
 REGS::REGS(){
-    regs = new int[3];
-    regs[0] = 0; regs[1] = 0; regs[2] = 0;
+    regs = new int[8];
+    for(int i =0; i < 8; i++){
+    	regs[i] = 0;
+    }
 };
+
 REGS::~REGS(){
 	delete[] regs;
 }

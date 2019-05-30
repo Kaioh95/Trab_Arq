@@ -2,69 +2,68 @@
 #include <iostream>
 using namespace std;
 
-ULA::ULA(){
+ULA::ULA(REGS * regs){
     //n = false;
     //z = true;
     //c = false;
+    this->reg = regs;
+
 }
 ULA::~ULA(){}
 
-void ULA::readA(int _a) {a= _a;}
-void ULA::readB(int _b) {b= _b;}
-float ULA::writeResult() {return(s);}
+void ULA::readA(int _a) {}
+void ULA::readB(int _b) {}
+// float ULA::writeResult() {}
 
-void ULA::op(int ulaOP){
+void ULA::op(int ulaOP,int font, int dest){
     switch (ulaOP) {
-        case 0:
-            s = b;
-            break;
         case 1:
-            s = a + b;
+            dest = dest + font;
             break;
         case 2:
-            s = a - b;
+            dest = dest - font;
             break;
         case 3:
-            s = (a || b);
+            dest = (dest || font);
             break;
         case 4:
-            s = (a && b);
+            dest = (dest && font);
             break;
-        case 5:
-            s = -a - 1;
-            break;
-        case 6:
-            s = -a;
-            break;
-        case 7:
-            s = a/2;
+        // case 5:
+        //     dest = -a - 1;
+        //     break;
+        // case 6:
+        //     dest = -a;
+        //     break;
+        // case 7:
+        //     dest = a/2;
         default:
             break;
     }
-    if(s > 127 || s < -128){
-        c = true;
-        z = false;
-        n = false;
-        if(s<0){ n = true; }
-    }
+    // if(s > 127 || s < -128){
+    //     c = true;
+    //     z = false;
+    //     n = false;
+    //     if(s<0){ n = true; }
+    // }
 
-    else if(s < 0){
-        n = true;
-        z = false;
-        c = false;
-    }
+    // else if(s < 0){
+    //     n = true;
+    //     z = false;
+    //     c = false;
+    // }
     
-    else if(s == 0){
-        z = true;
-        n = false;
-        c = false;
-    }
-    else{
-        z = false;
-        n = false;
-        c = false;
+    // else if(s == 0){
+    //     z = true;
+    //     n = false;
+    //     c = false;
+    // }
+    // else{
+    //     z = false;
+    //     n = false;
+    //     c = false;
         
-    }
+    // }
     cout<<"N: "<< n 
         <<" Z: "<< z 
         <<" C: "<< c << endl;
