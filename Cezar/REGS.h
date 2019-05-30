@@ -6,21 +6,10 @@ public:
     //int [] regs;
     int* regs;
     
-    REGS ();
-    int readR(int _adress);
+    REGS();
+    ~REGS();
+    int readR(int _adress)const;
     void writeR(int _adress, int _v);  
-};
-
-REGS::REGS(){
-    regs = new int[16];
-};
-    
-int REGS::readR(int _adress){
-    return (regs[_adress]);
-};
-    
-void REGS::writeR(int _adress, int _v){
-    regs[_adress]= _v;
 };
 
 #endif
