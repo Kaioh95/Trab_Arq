@@ -50,12 +50,15 @@ void PC::decodificar(string code){
 		i++;
 		// Instrução de Parada
 	}
-	cout << "Code_: "<< code_ << endl;
 	if (code_ =="HLT"){
+			regs->writeR(7, regs->readR(7)+1);
+			cout << "Comando: "<< code_ << endl;
 			exit(2);
 		}
 		// Instrução de NOP
-		if (code_ =="HLT"){
+		if (code_ =="NOP"){
+			regs->writeR(7, regs->readR(7)+1);			
+			cout << "Comando: "<< code_ << endl;
 			system("sleep 1");
 			return;
 		}
@@ -155,26 +158,58 @@ void PC::decodificar(string code){
 		}
 		// Instruções de dois operandoS
 		if (code_ =="MOV"){
-
+			regs->writeR(7, regs->readR(7)+2);
+			MOV(code, code_);
+			return;
 		}
 		if (code_ =="ADD"){
+			regs->writeR(7, regs->readR(7)+2);	
 
 		}
 		if (code_ =="SUB"){
+			regs->writeR(7, regs->readR(7)+2);	
 
 		}
 		if (code_ =="CMP"){
+			regs->writeR(7, regs->readR(7)+2);	
 
 		}
 		if (code_ =="AND"){
+			regs->writeR(7, regs->readR(7)+2);	
 
 		}
 		if (code_ =="OR"){
+			regs->writeR(7, regs->readR(7)+2);	
 
 		}
 		cout << "Código inválido: " << 	code << endl;
 		exit(3);		
 };
+
+void PC::MOV(string code, string subcode){
+	code.erase(0, subcode.size()+1);
+	string str_2 = "";
+	string str_1 = "";
+	int i = 0;
+	while(code[i]!= ',' and code[i] != '\n'){
+		str_1.append(code,i, 1);
+		i++;
+	}
+	i = 0;
+	code.erase(0,str_1.size()+1);
+	cout << "Buscou o primeiro:" << str_1 << endl << "Tamanho: " << str_1.size() << endl;
+	int Operando_1 = Buscar_operando(str_1);
+	cout << "Entrou Aqui" << endl;
+	while(code[i]!= ',' and code[i] != '\0' and code[i] != ' '){
+		str_2.append(code,i, 1);
+		i++;
+	}
+	cout << "Buscou o Segundo: " << str_2 << endl;
+	int Operando_2 = Buscar_operando(str_2);
+	Buscar_destino(str_2, Operando_1);
+}
+
+
 
 int PC::Buscar_operando(string code){
 
@@ -182,8 +217,8 @@ int PC::Buscar_operando(string code){
 	if (code[0] == 'R'){
 		return(regs->readR(is_dec(static_cast<char>(code[1]))));
 	}
-	if (code[0] == '(' and code[3] == ')' and code[1] == 'R'){
-		// Modo indexado
+	else if (code[0] == '(' and code[3] == ')' and code[1] == 'R'){
+		// Modo indireto
 		if(code.size() == 3){
 			return mem->read(regs->readR(is_dec(static_cast<char const>(code[2]))));
 		}
@@ -201,15 +236,15 @@ int PC::Buscar_operando(string code){
 			return mem->read(numero);
 		}
 	}
-	if(code[0]== '-' and code[2] == 'R'){
-		// Registrador Pré-decrementado.
+	else if(code[0] == '-'){
+		// Modo Pré-decrementado.
 		if(code.size() == 5){
 			int numero = regs->readR(is_dec(static_cast<char const>(code[2])));
 			numero -= 1;
 			regs->writeR(is_dec(static_cast<char const>(code[2])),regs->readR(is_dec(static_cast<char const>(code[2]))) - 1 );
 			return mem->read(numero);
 		}
-		// Registrador Pré-decrementado indireto.
+		// Modo Pré-decrementado indireto.
 		if (code.size() == 6 and code[5] == 'I'){
 			int numero = regs->readR(is_dec(static_cast<char const>(code[2])));
 			numero -= 1;
@@ -218,9 +253,86 @@ int PC::Buscar_operando(string code){
 			return mem->read(numero);
 		}
 	}
-	if(code[code.size()-1] == ')'){
-		// Registrador Indexado indireto
+	// Modo Indexado
+	else if(code[code.size()-1] == ')' and code[code.size()-3] == 'R'){
+		string str = "";
+		str.append(code, 0, code.size()-5);
+		int numero = regs->readR(is_dec(static_cast<char const>(code[2])));
+		numero += stoi(str);
+		return mem->read(numero);
+	}
+	// Modo indexado indireto
+	else if(code[code.size()-1] == 'I' and code[code.size()-4] == 'R'){
+		string str = "";
+		str.append(code, 0, code.size()-6);
+		int numero = regs->readR(is_dec(static_cast<char const>(code[2])));
+		numero += stoi(str);
+		numero = mem->read(numero);
+		return mem->read(numero);
+	}
+	else{
+		cout << "Registrador inválido" << endl;
+		exit(6);
+	}
 
+};
+
+void PC::Buscar_destino(string code, int value){
+
+	// Modo direto, pego o valor do registrador.
+	if (code[0] == 'R'){
+		regs->writeR(is_dec(static_cast<char>(code[1])), value);
+	}
+	else if (code[0] == '(' and code[3] == ')' and code[1] == 'R'){
+		// Modo indireto
+		if(code.size() == 3){
+			mem->write(regs->readR(is_dec(static_cast<char const>(code[2]))), value);
+		}
+		// Modo Pós-incrementado
+		if (code[4]=='+' and code.size() == 5){
+			int numero = regs->readR(is_dec(static_cast<char const>(code[2]))) - 1;
+			mem->write(numero, value);
+		}
+		// Modo Pós-Incrementado indireto
+		if(code[4] == '+' and code[5] == 'I'){
+			int numero = regs->readR(is_dec(static_cast<char const>(code[2]))) - 1;
+			numero = mem->read(numero);
+			mem->write(numero, value);
+		}
+	}
+	else if(code[0]== '-' and code[2] == 'R'){
+		// Modo Pré-decrementado.
+		if(code.size() == 5){
+			int numero = regs->readR(is_dec(static_cast<char const>(code[2])));
+			mem->write(numero, value);
+		}
+		// Modo Pré-decrementado indireto.
+		if (code.size() == 6 and code[5] == 'I'){
+			int numero = regs->readR(is_dec(static_cast<char const>(code[2])));
+			numero = mem->read(numero);
+			mem->write(numero, value);
+		}
+	}
+	// Modo Indexado
+	else if(code[code.size()-1] == ')' and code[code.size()-3] == 'R'){
+		string str = "";
+		str.append(code, 0, code.size()-5);
+		int numero = regs->readR(is_dec(static_cast<char const>(code[2])));
+		numero += stoi(str);
+		mem->write(numero, value);
+	}
+	// Modo indexado indireto
+	else if(code[code.size()-1] == 'I' and code[code.size()-4] == 'R'){
+		string str = "";
+		str.append(code, 0, code.size()-6);
+		int numero = regs->readR(is_dec(static_cast<char const>(code[2])));
+		numero += stoi(str);
+		numero = mem->read(numero);
+		mem->write(numero, value);
+	}
+	else{
+		cout << "Registrador inválido" << endl;
+		exit(6);
 	}
 
 };

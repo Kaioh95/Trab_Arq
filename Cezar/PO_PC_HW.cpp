@@ -25,7 +25,6 @@ int main(int argc, char* argv[]){
 
     while(getline(arq, str)){
         pc->decodificar(str);
-
     }
     
 	return 0;      

@@ -15,8 +15,10 @@ class PC{
 	public:
 		PC(REGS * regs, MEM * mem, ULA * ula);
 		~PC();
+		void MOV(string code, string subcode);
 		int is_dec(char code);
 		void decodificar(string code);
 		int Buscar_operando(string code);
+		void Buscar_destino(string code, int value);
 
 };
