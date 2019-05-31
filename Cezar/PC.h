@@ -15,6 +15,7 @@ class PC{
 	public:
 		PC(REGS * regs, MEM * mem, ULA * ula);
 		~PC();
+		int is_dec(char code);
 		void decodificar(string code);
 		int Buscar_operando(string code);
 
