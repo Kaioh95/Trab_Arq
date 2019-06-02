@@ -15,7 +15,7 @@ int main(int argc, char* argv[]){
     string bloco;
     int c = 0;
 
-    ifstream arq("leitura2.txt", ios::in);
+    ifstream arq("leitura4.txt", ios::in);
 
     if(!arq){
     	cout<<"o arquivo não foi aberto"<<endl;
