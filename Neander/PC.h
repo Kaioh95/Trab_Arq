@@ -17,6 +17,7 @@ class PC
 		int PE;
 		bool lastState;
 		int cont;
+		int clock = 0;
 		ULA ula;
 		AC ac;
 		MEM mem;

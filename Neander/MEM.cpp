@@ -3,6 +3,10 @@
 MEM::MEM()
 {
 	this->mem = new int[256];
+	
+	for(int i = 0; i < 256; i++){
+        mem[i] = 0;
+    }
 }
 MEM::~MEM()
 {

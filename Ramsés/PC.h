@@ -13,6 +13,7 @@ public:
     int EA = 0;
     int PE; // estado atual, proximo estado
     bool lastState;
+    int clock = 0;
     ULA ula;
     REGS regs;
     MEM mem;

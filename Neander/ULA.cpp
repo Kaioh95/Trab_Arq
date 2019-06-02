@@ -36,21 +36,40 @@ void ULA::op(int op)
 	switch(op)
 	{
 		case 0:
+			s = b;
 			break;
 		case 1:
 			cout<<"ULA: "<<a<<" + "<<b<<endl;
 			s = a + b;
 			break;
 		case 2:
-			cout<<"ULA: -"<<a<<" - "<<b<<endl;
+			cout<<"ULA: NOT "<<a<< endl;
 			s = -a - 1;
 			break;
 		case 3:
+			cout<<"ULA: OR"<<endl;
 			s = (a || b);
 			break;
 		case 4:
+			cout<<"ULA: AND"<<endl;
 			s = (a && b);
 		default:
 			break;
 	}
+
+	if(s < 0){
+        n = true;
+        z = false;
+    }
+    
+    else if(s == 0){
+        z = true;
+        n = false;
+    }
+    else{
+        z = false;
+        n = false;     
+    }
+    cout<<"N: "<< n 
+        <<" Z: "<< z << endl;
 }
